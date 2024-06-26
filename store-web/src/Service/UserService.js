@@ -15,7 +15,7 @@ export const RegisterUser = async (dataInput) => {
 }
 
 export const getDetailsUser = async (id, acces_token) => {
-   const res = await axiosJWT.get(`${process.env.REACT_APP_API_KEY}/user/get-details/${id}`, {
+   const res = await axios.get(`${process.env.REACT_APP_API_KEY}/user/get-details/${id}`, {
       headers: {
          Authorization: `Bearer ${acces_token}`
       },

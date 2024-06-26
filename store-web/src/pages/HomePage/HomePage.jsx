@@ -8,13 +8,10 @@ import { useSelector } from 'react-redux';
 import Loading from '../../components/LoadingComponent/Loading';
 import { useDebounce } from '../../hooks/useDebounce';
 import { Button } from 'antd';
-import ProductDetailComponent from '../../components/ProductDetailComponent/ProductDetailComponent';
 import { useNavigate } from 'react-router-dom';
 export default function HomePage() {
   const searchValueProduct = useSelector(state => state?.product?.search)
   const navigate = useNavigate()
-  const refSearch = useRef()
-  const [stateSearch, setStateSearch] = useState([])
   const [loangdingSearch, setLoadingSearch] = useState(false)
   const [limit, setLimit] = useState(5)
   const searchDebounce = useDebounce(searchValueProduct, 1000)

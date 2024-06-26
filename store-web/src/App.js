@@ -10,7 +10,6 @@ import { updateUser } from './redux/silde/userSlide';
 import Loading from './components/LoadingComponent/Loading';
 
 function App() {
-
   const user = useSelector(state => state.user)
   const dispatch = useDispatch()
   const [isLoading, setIsloading] = useState(false)
