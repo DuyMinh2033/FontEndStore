@@ -55,10 +55,10 @@ export default function HomePage() {
           <a style={{ fontWeight: '500', fontSize: '20px', marginLeft: '20px' }} onClick={() => handleClickType(product)}>{product}</a>
         ))}
         <SliderCommponent />
-        <Container>
-          <Row className="justify-content-center">
+        <div>
+          <div style={{ display: 'flex', marginLeft: '260px', marginRight: '50px ', flexWrap: 'wrap'}}>
             {product?.data?.map((product) => (
-              <Col key={product._id} xs={12} sm={6} md={4} lg={3} xl={2} className="d-flex justify-content-center align-content-center mt-2 ms-3 mt-3">
+              <div style={{ padding: '10px', boxSizing: 'border-box' }}>
                 <CardCommponent
                   id={product._id}
                   name={product.name}
@@ -70,10 +70,10 @@ export default function HomePage() {
                   countInStock={product.countInStock}
                   selled={product.selled}
                 />
-              </Col>
+              </div>
             ))}
-          </Row>
-        </Container>
+          </div>
+        </div>
       </Loading>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', alignContent: 'center', margin: '20px' }}>
         <Button disabled={product?.totalProduct === product?.data?.length || product?.totalPage === 1} style={{ fontWeight: '700' }} onClick={() => setLimit(prev => prev + 6)}>Xem Thêm</Button>
