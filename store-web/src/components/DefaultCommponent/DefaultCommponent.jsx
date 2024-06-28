@@ -1,10 +1,11 @@
 import React from 'react'
 import HeaderCommponent from '../HeaderCommponent/HeaderCommponent';
+import ChangeHeader from '../../pages/ChangeHeader/ChangeHeader';
 
 const DefaultCommponent = ({children , isShowHeader}) => {
     return (
         <div>
-              {isShowHeader && <HeaderCommponent/>}
+              {isShowHeader && <ChangeHeader/>}
               {children}
         </div>
       );

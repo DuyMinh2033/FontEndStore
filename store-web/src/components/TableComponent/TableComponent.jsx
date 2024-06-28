@@ -6,15 +6,17 @@ import { faEraser, faFileExcel } from "@fortawesome/free-solid-svg-icons";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 
-const TableComponent = ({
-  dataValue,
-  isLoading,
-  columns,
-  handleDeleteAllUser,
-  handleDeleteAllProduct,
-  ...props
-}) => {
+const TableComponent = ({ dataValue, isLoading, columns, handleDeleteAllUser, handleDeleteAllProduct, ...props }) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState("");
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 5, // Số phần tử mỗi trang
+  });
+
+  const handleTableChange = (pagination) => {
+    setPagination(pagination);
+  };
+
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
       setSelectedRowKeys(selectedRowKeys);
@@ -24,7 +26,7 @@ const TableComponent = ({
       name: record.name,
     }),
   };
-  
+
   // const data = dataValue?.map((product) => {
   //   return {
   //     ...product,
@@ -100,6 +102,8 @@ const TableComponent = ({
             type: "checkbox",
             ...rowSelection,
           }}
+          pagination={pagination}
+          onChange={handleTableChange}
           columns={columns}
           dataSource={dataValue}
           {...props}

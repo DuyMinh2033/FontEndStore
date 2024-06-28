@@ -48,7 +48,7 @@ export default function HomePage() {
     navigate(`/product-type/${encodedUrl}`);
   }
   return (
-    <div>
+    <div style={{margin:'20px 0'}}>
       <Loading isLoading={isLoading || loangdingSearch}>
         <a style={{ marginLeft: '30px', marginTop: '20px', fontWeight: '500', fontSize: '20px' }} onClick={() => navigate('/')}>Trang chủ</a>
         {productType?.data?.map(product => (

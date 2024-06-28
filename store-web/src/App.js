@@ -8,7 +8,7 @@ import * as UserService from './Service/UserService'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from './redux/silde/userSlide';
 import Loading from './components/LoadingComponent/Loading';
-
+import './App.css'
 function App() {
   const user = useSelector(state => state.user)
   const dispatch = useDispatch()

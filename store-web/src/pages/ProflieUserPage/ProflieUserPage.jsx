@@ -4,8 +4,7 @@ import HeaderCommponent from '../../components/HeaderCommponent/HeaderCommponent
 
 const ProflieUserPage = () => {
   return (
-    <div>
-      <HeaderCommponent/>
+    <div style={{marginTop:'30px'}}>
       <ProflieCommponent/>
     </div>
   )

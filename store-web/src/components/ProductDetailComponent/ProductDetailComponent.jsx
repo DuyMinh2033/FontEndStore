@@ -61,8 +61,8 @@ const ProductDetailComponent = ({ idProduct }) => {
     },[])
 
     return (
-        <div style={{}}>
-            <Card style={{ maxWidth: '1000px', maxHeight: '800px', padding: '20px', borderRadius: '10px', marginTop: '70px' }}>
+        <div>
+            <Card style={{ maxWidth: '1000px', maxHeight: '800px', padding: '20px', borderRadius: '10px', marginTop: '70px',backgroundColor:'#e6e8eb'}}>
                 <Container className="" style={{ margin: '20px' }}>
                     <Row>
                         <Col md={6} className="text-center">

@@ -53,7 +53,7 @@ export default function HeaderCommponent() {
   const OnchangeSearch = (e) => {
     dispatch(searchProduct(e.target.value))
   }
-
+ 
   return (
     <div>
       <Navbar bg="dark" variant="dark" className=''>
@@ -85,7 +85,7 @@ export default function HeaderCommponent() {
         </div>
         <Navbar.Brand as={Link} to='/cart' className='ms-4'>
           <FontAwesomeIcon icon={faCartShopping} /> </Navbar.Brand>
-        <Badge count={order?.orderItems?.length} style={{ fontSize: '10px', marginBottom: '30px' }} size='small'>
+        <Badge count={user?.id !== '' ? order?.orderItems?.length : 0} style={{ fontSize: '10px', marginBottom: '30px' }} size='small'>
           <ShoppingCartOutlined style={{ fontSize: '30px', color: '#fff' }} />
         </Badge>
       </Navbar>

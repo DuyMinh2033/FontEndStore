@@ -17,23 +17,25 @@ const CardCommponent = (props) => {
     return (
         <>
             {id && (
-                <div className="d-lg-flex justify-content-center">
-                    <Card
-                        style={{ width: '218px', cursor: countInStock > 0 ? 'pointer' : 'not-allowed', opacity: countInStock > 0 ? 1 : 0.6 }}
-                        className='d-flex'
-                        onClick={countInStock > 0 ? () => handleDetails(id) : null}
-                    >
-                        <Card.Img variant="top" src={image} style={{ height: '156px' }} />
-                        <Card.Body>
-                            <Card.Title>{name}</Card.Title>
-                            <Card.Text>Giá: {convertPrice(price)}</Card.Text>
-                            <p className="card-rating">{rating} ⭐ | Đã bán {selled || 2}</p>
-                            <p>Số lượng: {countInStock}</p>
-                            <Card.Text>Mô tả: {description}</Card.Text>
-                            {countInStock === 0 && <p style={{ color: 'red', fontWeight: 'bold' }}>Sản phẩm đã hết hàng</p>}
-                        </Card.Body>
-                    </Card>
-                </div >
+              <>
+                    <div className="d-lg-flex justify-content-center">
+                        <Card
+                            style={{ width: '218px', cursor: countInStock > 0 ? 'pointer' : 'not-allowed', opacity: countInStock > 0 ? 1 : 0.6 }}
+                            className='d-flex'
+                            onClick={countInStock > 0 ? () => handleDetails(id) : null}
+                        >
+                            <Card.Img variant="top" src={image} style={{ height: '156px' }} />
+                            <Card.Body>
+                                <Card.Title>{name}</Card.Title>
+                                <Card.Text>Giá: {convertPrice(price)}</Card.Text>
+                                <p className="card-rating">{rating} ⭐ | Đã bán {selled || 2}</p>
+                                <p>Số lượng: {countInStock}</p>
+                                <Card.Text>Mô tả: {description}</Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </div >
+                    {countInStock === 0 && <p style={{ color: 'red', fontWeight: 'bold', margin:'5px 20px'}}>Sản phẩm đã hết hàng</p>}
+              </>
             )}
 
 

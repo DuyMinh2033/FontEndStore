@@ -14,6 +14,7 @@ import PaymentPage from "../pages/PaymentPage/PaymentPage";
 import OrderSucces from "../components/OrderSuccess/OrderSuccess";
 import MyOder from "../components/MyOrder/MyOder";
 import MyDetailOrder from "../components/MyDetailOrder/MyDetailsOrder";
+import ChangeHeader from "../pages/ChangeHeader/ChangeHeader";
 
 export const routes = [
     {
@@ -47,6 +48,10 @@ export const routes = [
         isShowHeader: true
     },
     {
+        path:'/change-header',
+        page: ChangeHeader,
+    },
+    {
         path: '/product',
         page: ProducPage,
         isShowHeader: true
@@ -71,7 +76,8 @@ export const routes = [
     },
     {
         path: '/proflie',
-        page: ProflieUserPage
+        page: ProflieUserPage,
+        isShowHeader:true
     },
     {
         path:'/cart',

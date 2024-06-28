@@ -6,7 +6,7 @@ const ProducDetailsPage = () => {
   const param = useParams()
   const { id } = param
   return (
-    <div style={{backgroundColor:'rgb(222 222 222)' ,height:'100vh',display:'flex', justifyContent:'center'}}>
+    <div style={{display:'flex', justifyContent:'center'}}>
       <ProductDetailComponent idProduct={id} />
     </div>
   )
