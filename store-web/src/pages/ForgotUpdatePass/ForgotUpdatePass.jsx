@@ -8,26 +8,27 @@ import * as userService from '../../Service/UserService'
 const ForgotUpdatePassWord = () => {
     const [password, setPassWord] = useState('')
     const location = useLocation()
-    const mutation = useMutationHook(({id, password}) => userService.updateUser(id, password) )
-    const messageUpdate  = mutation?.data?.status === 'OK'
+    const mutation = useMutationHook(({ id, password }) => userService.updateUser(id, password))
+    const messageUpdate = mutation?.data?.status === 'OK'
     const navigate = useNavigate()
     const onchangeUpdatePassWord = (e) => {
         setPassWord(e.target.value)
     }
 
     const handleUpdatePass = () => {
-       mutation.mutate({
-        id: location.state.id,
-        password
-       })
+        console.log('password', password)
+        mutation.mutate({
+            id: location.state.id,
+            password: { password }
+        })
     }
     console.log('location', location.state)
-    useEffect(() =>{
-        if(messageUpdate){
+    useEffect(() => {
+        if (messageUpdate) {
             message.success('Cập nhật mật khẩu thành công')
             navigate('/login')
         }
-    },[messageUpdate])
+    }, [messageUpdate])
     return (
         <div>
             <Loading isLoading={false} delay={500}>
