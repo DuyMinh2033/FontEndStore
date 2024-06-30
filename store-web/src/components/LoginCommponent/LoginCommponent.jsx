@@ -27,7 +27,7 @@ const LoginComponent = () => {
         dispatch(updateUser({ id, ...res?.data, acces_token: token }))
         setIsLoading(false)
     }
-  
+
     useEffect(() => {
         if (messageLogin) {
             message.success('Bạn đã đăng nhập thành công')
@@ -82,13 +82,13 @@ const LoginComponent = () => {
                                     <div className="card-body p-md-5">
                                         <div className="row justify-content-center">
                                             <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                                <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+                                                <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Đăng Nhập</p>
                                                 <form className="mx-1 mx-md-4">
                                                     <div className="d-flex flex-row align-items-center mb-4">
                                                         <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                                         <div className="form-outline flex-fill mb-0">
                                                             <input type="email" id="form3Example3c" className="form-control" onChange={(e) => handleOnchangeEmail(e)} />
-                                                            <label className="form-label" htmlFor="form3Example3c">Your Email</label>
+                                                            <label style={{ margin: '3px 2px' }} className="form-label" htmlFor="form3Example3c">Email của bạn</label>
                                                         </div>
                                                     </div>
 
@@ -96,7 +96,13 @@ const LoginComponent = () => {
                                                         <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                                                         <div className="form-outline flex-fill mb-0">
                                                             <input type="password" id="form3Example4c" className="form-control" onChange={(e) => handleOnchangePassWord(e)} />
-                                                            <label className="form-label" htmlFor="form3Example4c" >Password</label>
+                                                            <label style={{ margin: '3px 2px' }} className="form-label" htmlFor="form3Example4c" >
+                                                                Mật khẩu
+                                                                <span
+                                                                    style={{ marginLeft: '160px', color: 'blue', fontSize: '15px' }}
+                                                                    onClick={() => navigate('/forgot-password')}
+                                                                >Quên mật khẩu</span>
+                                                            </label>
                                                             {data?.status === 'Error' && <span style={{ color: 'red', marginLeft: 45 }}>{data?.message}</span>}
                                                         </div>
                                                     </div>
@@ -104,7 +110,7 @@ const LoginComponent = () => {
                                                     <div className="form-check d-flex justify-content-center mb-5">
                                                         <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
                                                         <label className="form-check-label" htmlFor="form2Example3">
-                                                            I agree all statements in <a href='' onClick={handleNavigateSignUp}>Register</a>
+                                                            Ghi nhớ mật khẩu <span onClick={handleNavigateSignUp} style={{ color: 'red', marginLeft: '8px' }}>Đăng kí</span>
                                                         </label>
                                                     </div>
 

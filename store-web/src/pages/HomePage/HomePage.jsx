@@ -48,17 +48,17 @@ export default function HomePage() {
     navigate(`/product-type/${encodedUrl}`);
   }
   return (
-    <div style={{margin:'20px 0'}}>
+    <div style={{ margin: '20px 0' }}>
       <Loading isLoading={isLoading || loangdingSearch}>
-        <a style={{ marginLeft: '30px', marginTop: '20px', fontWeight: '500', fontSize: '20px' }} onClick={() => navigate('/')}>Trang chủ</a>
+        <span style={{ marginLeft: '30px', marginTop: '20px', fontWeight: '500', fontSize: '20px' }} onClick={() => navigate('/')}>Trang chủ</span>
         {productType?.data?.map(product => (
-          <a style={{ fontWeight: '500', fontSize: '20px', marginLeft: '20px' }} onClick={() => handleClickType(product)}>{product}</a>
+          <span style={{ fontWeight: '500', fontSize: '20px', marginLeft: '15px' }} onClick={() => handleClickType(product)}>{product}</span>
         ))}
         <SliderCommponent />
-        <div>
-          <div style={{ display: 'flex', marginLeft: '260px', marginRight: '50px ', flexWrap: 'wrap'}}>
+        <div style={{ width: '1190px', maxWidth: '100%', margin: '0 auto' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             {product?.data?.map((product) => (
-              <div style={{ padding: '10px', boxSizing: 'border-box' }}>
+              <div key={product._id} style={{ padding: '10px', boxSizing: 'border-box' }}>
                 <CardCommponent
                   id={product._id}
                   name={product.name}
@@ -74,7 +74,7 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </Loading>
+      </Loading >
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', alignContent: 'center', margin: '20px' }}>
         <Button disabled={product?.totalProduct === product?.data?.length || product?.totalPage === 1} style={{ fontWeight: '700' }} onClick={() => setLimit(prev => prev + 6)}>Xem Thêm</Button>
       </div>

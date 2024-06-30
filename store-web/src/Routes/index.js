@@ -15,6 +15,8 @@ import OrderSucces from "../components/OrderSuccess/OrderSuccess";
 import MyOder from "../components/MyOrder/MyOder";
 import MyDetailOrder from "../components/MyDetailOrder/MyDetailsOrder";
 import ChangeHeader from "../pages/ChangeHeader/ChangeHeader";
+import ForgotPassWord from "../pages/ForgotPassWord/ForgotPassWord";
+import ForgotUpdatePassWord from "../pages/ForgotUpdatePass/ForgotUpdatePass";
 
 export const routes = [
     {
@@ -33,6 +35,14 @@ export const routes = [
         isShowHeader: true
     },
     {
+        path: '/forgot-password',
+        page: ForgotPassWord,
+    },
+    {
+        path: '/update-forgot',
+        page:   ForgotUpdatePassWord,
+    },
+    {
         path: '/my-order',
         page: MyOder,
         isShowHeader: true
@@ -48,7 +58,7 @@ export const routes = [
         isShowHeader: true
     },
     {
-        path:'/change-header',
+        path: '/change-header',
         page: ChangeHeader,
     },
     {
@@ -77,12 +87,12 @@ export const routes = [
     {
         path: '/proflie',
         page: ProflieUserPage,
-        isShowHeader:true
+        isShowHeader: true
     },
     {
-        path:'/cart',
+        path: '/cart',
         page: CartPage,
-        isShowHeader:true
+        isShowHeader: true
     },
     {
         path: '/admin',

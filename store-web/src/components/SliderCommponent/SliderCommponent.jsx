@@ -7,11 +7,11 @@ import React from 'react'
 import './Slider.css'
 const SliderCommponent = () => {
   return (
-    <div className="carousel-container" style={{ width: '75%', height: '50%', margin: '0 220px' }}>
+    <div className="carousel-container" style={{ width: '75%', height: '20%', display: 'flex', justifyContent: 'center' }}>
       <Carousel interval={3000}> {/* Apply desired styling class */}
         <Carousel.Item style={{}}>
           <img
-            style={{ width: '100%', height: '100%'}}
+            style={{ width: '100%', height: '100%' }}
             className="d-block w-100"
             src='https://cf.shopee.vn/file/vn-50009109-727a24a85a60935da5ccb9008298f681'
             alt="First slide"
@@ -20,7 +20,7 @@ const SliderCommponent = () => {
 
         <Carousel.Item>
           <img
-            style={{ width: '100%', height: '100%'}}
+            style={{ width: '100%', height: '100%' }}
             className="d-block w-100"
             src='https://cf.shopee.vn/file/vn-50009109-a36ca122ff396384467945294ae27edd'
             alt="Second slide"
@@ -29,7 +29,7 @@ const SliderCommponent = () => {
 
         <Carousel.Item>
           <img
-            style={{ width: '100%', height: '100%'}}
+            style={{ width: '100%', height: '100%' }}
             className="d-block w-100"
             src=' https://cf.shopee.vn/file/vn-50009109-b850047513facece14eab68739be6902'
             alt="Second slide"
@@ -38,7 +38,7 @@ const SliderCommponent = () => {
 
         <Carousel.Item>
           <img
-            style={{ width: '100%', height: '100%'}}
+            style={{ width: '100%', height: '100%' }}
             className="d-block w-100"
             src='https://cf.shopee.vn/file/vn-50009109-b40ff0ff3bcaf8afc43dc0e54e5f3bdd'
             alt="Second slide"

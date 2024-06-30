@@ -10,6 +10,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { addOrderProduct } from '../../redux/silde/OrderSlide'
 import { convertPrice, initFacebookSDK } from '../../utils';
 import LikeButtonComponent from '../LikeButtonComponent/LikeButtonComponent';
+import * as message from '../MessagComponent/MessagComponent';
 
 const ProductDetailComponent = ({ idProduct }) => {
     const user = useSelector(state => state.user)
@@ -33,7 +34,7 @@ const ProductDetailComponent = ({ idProduct }) => {
     useEffect(() => {
         handleDetails()
     }, [idProduct])
-    console.log('product', productDetail)
+
     const handleStart = (number) => {
         const stars = [];
         for (var i = 0; i < number; i++) {
@@ -44,8 +45,10 @@ const ProductDetailComponent = ({ idProduct }) => {
     const handleAdd = () => {
         if (!user.id) {
             navigate('/login', { state: location })
-        } else {
+        } 
+        else {
             dispatch(addOrderProduct({
+                userId: user?.id,
                 orderItems: {
                     name: productDetail?.data?.name,
                     amount: quantity,
@@ -54,15 +57,17 @@ const ProductDetailComponent = ({ idProduct }) => {
                     product: productDetail?.data?._id
                 }
             }))
+            message.success('Bạn đã thêm sản phẩm vào giỏ hàng')
         }
+      
     }
-    useEffect(() =>{
+    useEffect(() => {
         initFacebookSDK()
-    },[])
+    }, [])
 
     return (
         <div>
-            <Card style={{ maxWidth: '1000px', maxHeight: '800px', padding: '20px', borderRadius: '10px', marginTop: '70px',backgroundColor:'#e6e8eb'}}>
+            <Card style={{ maxWidth: '1000px', maxHeight: '800px', padding: '20px', borderRadius: '10px', marginTop: '70px', backgroundColor: '#e6e8eb' }}>
                 <Container className="" style={{ margin: '20px' }}>
                     <Row>
                         <Col md={6} className="text-center">
@@ -104,7 +109,6 @@ const ProductDetailComponent = ({ idProduct }) => {
                                     onClick={handleAdd}>Chọn mua</Button>
                             </div>
                         </Col>
-                       
                     </Row>
                 </Container>
             </Card>

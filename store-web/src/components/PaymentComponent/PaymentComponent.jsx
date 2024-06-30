@@ -23,7 +23,8 @@ const PaymentComponent = () => {
     const navigate = useNavigate()
     const orderProduct = useSelector(state => state.order);
     const user = useSelector(state => state.user);
-    const orderRedux = useSelector(state => state.order)
+    const userId = user?.id
+    const dataUserId = orderProduct?.users?.[userId]
     const mutation = useMutationHook(({ id, data }) => UserService.updateUser(id, data));
     const messageOK = mutation?.data?.status === 'OK';
     const mutateCreaterOder = useMutationHook(({ id, data, acces_token }) => OrderSevice.createOrder(id, data, acces_token))
@@ -39,7 +40,7 @@ const PaymentComponent = () => {
     const dispatch = useDispatch();
 
     const calculateTotal = () => {
-        const total = orderProduct?.selecedItemOrder?.reduce((acc, item) => {
+        const total = dataUserId?.selecedItemOrder?.reduce((acc, item) => {
             return acc + item.price * item.amount;
         }, 0);
         return total;
@@ -48,6 +49,7 @@ const PaymentComponent = () => {
     const handleOkDeleteAll = () => {
         if (checkedItems.length > 1) {
             dispatch(RemoveAllCart({
+                userId,
                 Ids: checkedItems
             }));
             setisOpenModal(false);
@@ -79,14 +81,14 @@ const PaymentComponent = () => {
                 state: {
                     paymentMethod,
                     total: totaPriceCart(),
-                    selecedItemOrder: orderRedux?.selecedItemOrder
+                    selecedItemOrder: dataUserId?.selecedItemOrder
                 },
             })
             const cart = []
-            orderRedux?.selecedItemOrder.forEach(item => {
+            dataUserId?.selecedItemOrder.forEach(item => {
                 cart.push(item.product)
             })
-            dispatch(RemoveAllCart({ Ids: cart }))
+            dispatch(RemoveAllCart({ userId, Ids: cart }))
         }
     }, [messageOrderCart])
 
@@ -135,7 +137,7 @@ const PaymentComponent = () => {
         mutateCreaterOder.mutate({
             id: user?.id,
             data: {
-                orderItems: orderRedux?.selecedItemOrder,
+                orderItems: dataUserId?.selecedItemOrder,
                 fullname: user?.name,
                 address: user?.address,
                 paymentMethod: paymentMethod,
@@ -155,7 +157,7 @@ const PaymentComponent = () => {
         mutateCreaterOder.mutate({
             id: user?.id,
             data: {
-                orderItems: orderRedux?.selecedItemOrder,
+                orderItems: dataUserId?.selecedItemOrder,
                 fullname: user?.name,
                 address: user?.address,
                 paymentMethod: paymentMethod,

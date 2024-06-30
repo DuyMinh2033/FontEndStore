@@ -22,7 +22,7 @@ const ChangeHeader = () => {
   const [avatar, setAvatar] = useState(user?.avatar)
   const [isDisable, setIsdisable] = useState(true)
   const [isDisableUser, setIsDisableUser] = useState(true)
-
+  const dataUserId = order?.users?.[user?.id]
   const dispatchLogout = async () => {
     try {
       localStorage.removeItem('acces_token');
@@ -75,7 +75,7 @@ const ChangeHeader = () => {
       onClick={handleLogout}
     >Đăng xuất</div>
   </div>;
-
+  console.log('order',dataUserId)
   return (
     <div>
       <header className={cx('header')}>
@@ -152,7 +152,7 @@ const ChangeHeader = () => {
             </div>
             <div className={cx('header__cart')}>
               <Badge
-                count={user?.id !== '' ? order?.orderItems?.length : 0} style={{ fontSize: '10px', marginBottom: '30px' }} size='small'
+                count={user?.id !== '' ? dataUserId?.orderItems?.length : 0} style={{ fontSize: '10px', marginBottom: '30px' }} size='small'
                 onClick={() => navigate('/cart')}
               >
                 <FontAwesomeIcon className={cx('icon__cart')} icon={faCartShopping} />
