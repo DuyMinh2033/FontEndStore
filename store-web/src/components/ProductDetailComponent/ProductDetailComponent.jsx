@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { addOrderProduct } from '../../redux/silde/OrderSlide'
 import { convertPrice, initFacebookSDK } from '../../utils';
-import LikeButtonComponent from '../LikeButtonComponent/LikeButtonComponent';
 import * as message from '../MessagComponent/MessagComponent';
 
 const ProductDetailComponent = ({ idProduct }) => {
@@ -38,14 +37,14 @@ const ProductDetailComponent = ({ idProduct }) => {
     const handleStart = (number) => {
         const stars = [];
         for (var i = 0; i < number; i++) {
-            stars.push(<FontAwesomeIcon icon={faStar} />)
+            stars.push(<FontAwesomeIcon key={i} icon={faStar} />)
         }
         return stars
     }
     const handleAdd = () => {
         if (!user.id) {
             navigate('/login', { state: location })
-        } 
+        }
         else {
             dispatch(addOrderProduct({
                 userId: user?.id,
@@ -59,7 +58,7 @@ const ProductDetailComponent = ({ idProduct }) => {
             }))
             message.success('Bạn đã thêm sản phẩm vào giỏ hàng')
         }
-      
+
     }
     useEffect(() => {
         initFacebookSDK()
@@ -102,7 +101,6 @@ const ProductDetailComponent = ({ idProduct }) => {
                                 </Col>
                             </Form.Group>
                             <div className="mt-3">
-                                <LikeButtonComponent dataHref='https://developers.facebook.com/docs/plugins/' />
                                 <Button
                                     variant="danger" className="me-2"
                                     style={{ width: '170px' }}

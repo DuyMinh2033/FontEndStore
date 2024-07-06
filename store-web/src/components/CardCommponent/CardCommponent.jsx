@@ -17,7 +17,7 @@ const CardCommponent = (props) => {
     return (
         <>
             {id && (
-              <>
+                <>
                     <div className="d-lg-flex justify-content-center">
                         <Card
                             style={{ width: '218px', cursor: countInStock > 0 ? 'pointer' : 'not-allowed', opacity: countInStock > 0 ? 1 : 0.6 }}
@@ -34,8 +34,8 @@ const CardCommponent = (props) => {
                             </Card.Body>
                         </Card>
                     </div >
-                    {countInStock === 0 && <p style={{ color: 'red', fontWeight: 'bold', margin:'5px 20px'}}>Sản phẩm đã hết hàng</p>}
-              </>
+                    {countInStock === 0 && <p style={{ color: 'red', fontWeight: 'bold', margin:'5px 20px' }}>Sản phẩm đã hết hàng</p>}
+                </>
             )}
 
 

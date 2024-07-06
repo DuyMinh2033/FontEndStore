@@ -59,9 +59,6 @@ const CartProductComponent = () => {
         })
     }
 
-    // console.log('userid', userId)
-    // console.log('order', orderProduct?.users)
-    // console.log('kq',orderProduct?.users?.[userId].orderItems)
     const handleOkDeleteAll = () => {
         if (checkedItems.length > 1) {
             dispatch(RemoveAllCart({
@@ -94,7 +91,7 @@ const CartProductComponent = () => {
     useEffect(() => {
         dispatch(selecedItemOrder({ userId: userId, listChecked: checkedItems }))
     }, [checkedItems])
-    console.log('check', checkedItems)
+
     const handleBuyCart = () => {
         console.log('data', dataUserId?.selecedItemOrder)
         if (dataUserId?.selecedItemOrder.length === 0) {
@@ -112,9 +109,16 @@ const CartProductComponent = () => {
             navigate('/payment')
         }
     }
+    console.log('user', dataUserId?.selecedItemOrder)
     useEffect(() => {
         form.setFieldsValue(infoUser)
     }, [form, infoUser])
+
+    useEffect(() => {
+        if (user.id === '') {
+            navigate('/login')
+        }
+    }, [user])
 
     const OnchangeInfoUpdate = (e) => {
         setInfoUser({
@@ -123,6 +127,7 @@ const CartProductComponent = () => {
         })
 
     }
+
     const handleOkInfoUpdate = () => {
         const {
             id,
@@ -226,7 +231,7 @@ const CartProductComponent = () => {
                             <div>
                                 <p >
                                     Địa chỉ giao hàng: {user?.address}
-                                    <span
+                                    {user.id && <span
                                         style={{
                                             fontWeight: 'normal',
                                             marginLeft: '15px',
@@ -234,7 +239,7 @@ const CartProductComponent = () => {
                                         }}
                                         onClick={handleUpdateAdress}
                                     >
-                                        Thay đổi</span>
+                                        Thay đổi</span>}
                                 </p>
                             </div>
                             <p >Tạm tính: {checkedItems.length > 0 ? convertPrice(calculateTotal()) : 0}</p>
@@ -248,7 +253,9 @@ const CartProductComponent = () => {
                                     marginLeft: '164px',
                                     fontSize: '22px'
                                 }}
+                                disabled={dataUserId?.selecedItemOrder === undefined}
                                 onClick={handleBuyCart} >Mua hàng</Button>
+
                         </div>
                     </Col>
                 </Row>

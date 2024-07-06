@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import SliderCommponent from '../../components/SliderCommponent/SliderCommponent';
 import CardCommponent from '../../components/CardCommponent/CardCommponent';
 import * as productService from '../../Service/ProductService'
 import { useQuery } from '@tanstack/react-query';
-import { Col, Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import Loading from '../../components/LoadingComponent/Loading';
 import { useDebounce } from '../../hooks/useDebounce';
@@ -51,8 +50,8 @@ export default function HomePage() {
     <div style={{ margin: '20px 0' }}>
       <Loading isLoading={isLoading || loangdingSearch}>
         <span style={{ marginLeft: '30px', marginTop: '20px', fontWeight: '500', fontSize: '20px' }} onClick={() => navigate('/')}>Trang chủ</span>
-        {productType?.data?.map(product => (
-          <span style={{ fontWeight: '500', fontSize: '20px', marginLeft: '15px' }} onClick={() => handleClickType(product)}>{product}</span>
+        {productType?.data?.map((product, index) => (
+          <span key={index} style={{ fontWeight: '500', fontSize: '20px', marginLeft: '15px' }} onClick={() => handleClickType(product)}>{product}</span>
         ))}
         <SliderCommponent />
         <div style={{ width: '1190px', maxWidth: '100%', margin: '0 auto' }}>

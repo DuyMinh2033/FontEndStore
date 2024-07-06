@@ -8,7 +8,7 @@ import './Slider.css'
 const SliderCommponent = () => {
   return (
     <div className="carousel-container" style={{ width: '75%', height: '20%', display: 'flex', justifyContent: 'center' }}>
-      <Carousel interval={3000}> {/* Apply desired styling class */}
+      <Carousel className='slider' interval={3000}>
         <Carousel.Item style={{}}>
           <img
             style={{ width: '100%', height: '100%' }}
